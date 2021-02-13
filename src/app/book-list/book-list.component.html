@@ -1,0 +1,7 @@
+<div class="container">
+    <h1>Book list</h1>
+    <hr>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let book of bookList">{{book.author.name}} {{book.author.surname}} | {{book.title}} | Dostępne egzemplarze: {{book.availableItems}} <button class="btn btn-primary">Borrow</button></li>
+      </ul>
+</div>
