@@ -2,6 +2,12 @@
     <h1 class="my-3">Book list</h1>
     <hr>
     <ul class="list-group">
-        <li class="list-group-item" *ngFor="let book of bookList">{{book.author.name}} {{book.author.surname}} | {{book.title}} | Dostępne egzemplarze: {{book.availableItems}} <button class="btn btn-primary ml-2 float-right">Borrow</button></li>
+      <app-book-item
+      *ngFor="let book of bookList; let i = index"
+      [book]="book"
+      [index]="i"
+      class="list-group-item"
+      ></app-book-item>
+        <!-- <li class="list-group-item" *ngFor="let book of bookList">{{book.author.name}} {{book.author.surname}} | {{book.title}} | Dostępne egzemplarze: {{book.availableItems}} | Year:{{book.year}}<button class="btn btn-primary ml-2 float-right">Borrow</button></li> -->
       </ul>
 </div>

@@ -1,0 +1,9 @@
+li {
+    list-style: none;
+}
+.btn{
+    transition: 0.1s;
+}
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 5px 2px 25px 2px rgba(66, 47, 47, 0.6);}
