@@ -58,6 +58,14 @@ get returnBookList(): Array<Book>{
     book.availableItems = availableItems
   }
 
-  constructor() {
-    }
+  addNewBook(name:string, surname:string, title:string, year:number, availableItems:number) {
+    const newBook = new Book();
+    newBook.id = this.booksList[this.booksList.length-1].id + 1;
+    newBook.author =  {name: name, surname: surname};
+    newBook.title=title;
+    newBook.year = year;
+    newBook.availableItems = availableItems
+    this.booksList.push(newBook)
+  }
+
 }
