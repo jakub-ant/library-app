@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { User } from '../shared/models/user.model';
 
 @Component({
   selector: 'app-log-in',
@@ -18,8 +19,9 @@ export class LogInComponent implements OnInit {
     })
   }
   onSubmit(){
-    const userData = {email: this.logInForm.controls.email.value, password:this.logInForm.controls.password.value}
-    console.log(userData)
+    const userData = new User()
+    userData.email = this.logInForm.controls.email.value;
+    userData.password = this.logInForm.controls.password.value
   }
 
 }
