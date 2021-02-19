@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from '../shared/models/user.model';
+import { LogInService } from '../shared/services/log-in.service';
 
 @Component({
   selector: 'app-log-in',
@@ -8,9 +10,10 @@ import { User } from '../shared/models/user.model';
   styleUrls: ['./log-in.component.scss']
 })
 export class LogInComponent implements OnInit {
-  logInForm!: FormGroup
-
-  constructor() { }
+  logInForm!: FormGroup;
+  errorMessage!:string|null
+ 
+  constructor(private logIn: LogInService, private router: Router) { }
 
   ngOnInit(): void {
     this.logInForm = new FormGroup({
@@ -21,7 +24,20 @@ export class LogInComponent implements OnInit {
   onSubmit(){
     const userData = new User()
     userData.email = this.logInForm.controls.email.value;
-    userData.password = this.logInForm.controls.password.value
+    userData.password = this.logInForm.controls.password.value;
+
+    this.logIn.logIn(userData)
+    .subscribe(
+      res => {
+        this.logIn.loggedIn = true;
+        this.logIn.loggedUser = res;
+        this.router.navigate(['/'])
+      },
+      err => {
+        this.errorMessage = err
+        setTimeout(()=>{this.errorMessage = null}, 6000)
+      }
+    )
   }
 
 }
