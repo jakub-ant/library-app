@@ -49,6 +49,11 @@ get returnBookList(): Array<Book>{
          subscriber.next(book)
     })
   }
+  borrowBook(index: number){
+    this.booksList[index].availableItems = this.booksList[index].availableItems -1;
+    return this.getBookByIndex(index)
+
+  }
   updateBookByIndex( name:string, surname:string, title:string, year:number, availableItems:number){
     const book = this.booksList[this.currentIndex];
     book.author.name = name;

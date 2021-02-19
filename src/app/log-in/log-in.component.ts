@@ -30,7 +30,7 @@ export class LogInComponent implements OnInit {
     .subscribe(
       res => {
         this.logIn.loggedIn = true;
-        this.logIn.loggedUser = res;
+        this.logIn.loggedUserID = res.id;
         this.router.navigate(['/'])
       },
       err => {

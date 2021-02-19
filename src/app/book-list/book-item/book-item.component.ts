@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { LogInComponent } from 'src/app/log-in/log-in.component';
 import { Book } from 'src/app/shared/models/book.model';
 import { BooksService } from 'src/app/shared/services/books.service';
+import { LogInService } from 'src/app/shared/services/log-in.service';
 
 @Component({
   selector: 'app-book-item',
@@ -13,7 +15,7 @@ export class BookItemComponent implements OnInit {
   book!: Book;
   @Input() index!:number;
 
-  constructor(private router: Router, private booksService: BooksService) { }
+  constructor(private router: Router, private booksService: BooksService, private userService: LogInService) { }
 
   ngOnInit(): void {
   }
@@ -21,6 +23,15 @@ export class BookItemComponent implements OnInit {
   onEdit(){
     this.booksService.setCurrentIndex(this.index)
      this.router.navigate(['book-edit'])
+  }
+
+  onBorrow(){
+    if(!this.userService.loggedUserID) return
+   this.booksService.borrowBook(this.index).subscribe(
+     book =>  this.userService.borrowBook(book),
+     err => console.log(err)
+   )
+
   }
 
 }
