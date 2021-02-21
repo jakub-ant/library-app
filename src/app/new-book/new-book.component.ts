@@ -24,7 +24,6 @@ export class NewBookComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.newBook)
     this.booksService.addNewBook(this.newBook.controls.name.value, this.newBook.controls.surname.value, this.newBook.controls.title.value, this.newBook.controls.year.value, this.newBook.controls.availableItems.value)
     this.router.navigate(['book-list'])
 

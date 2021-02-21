@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LogInComponent } from 'src/app/log-in/log-in.component';
 import { Book } from 'src/app/shared/models/book.model';
 import { BooksService } from 'src/app/shared/services/books.service';
 import { LogInService } from 'src/app/shared/services/log-in.service';
