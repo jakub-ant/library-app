@@ -1,7 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { User } from '../shared/models/user.model';
-import { LogInService } from '../shared/services/log-in.service';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  Router
+} from '@angular/router';
+import {
+  LogInService
+} from '../shared/services/log-in.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,19 +15,19 @@ import { LogInService } from '../shared/services/log-in.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-   get currentUser() {
-     return this.logIn.getUserByID
-   }
+  get currentUser() {
+    return this.logIn.getUserByID
+  }
 
-  constructor(private logIn: LogInService, private router: Router) { }
+  constructor(private logIn: LogInService, private router: Router) {}
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
 
   }
 
-  logOut(){
+  logOut() {
     this.logIn.logOut();
-this.router.navigate(['/'])
+    this.router.navigate(['/'])
 
   }
 
