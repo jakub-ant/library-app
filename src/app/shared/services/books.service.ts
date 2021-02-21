@@ -49,6 +49,12 @@ get returnBookList(): Array<Book>{
          subscriber.next(book)
     })
   }
+  getBookByID(id:number){
+    const book:Book = this.booksList.filter(book=>book.id===id)[0]
+    return new Observable<Book>(function subscribe(subscriber) {
+         subscriber.next(book)
+    })
+  }
   borrowBook(index: number){
     this.booksList[index].availableItems = this.booksList[index].availableItems -1;
     return this.getBookByIndex(index)

@@ -1,0 +1,14 @@
+<div class="container">
+    <h3 class="my-4">
+        {{book.title}} Reservations:
+    </h3>
+    <h5>
+        Total: {{reservations.length}}
+    </h5>
+    <hr>
+</div>
+<div class="container">
+    <ul class="list-group" *ngFor="let reserv of reservations">
+        <li class="list-group-item">Date: {{reserv.date|date:'medium'}} | User: {{reserv.userEmail}}</li>
+      </ul>
+</div>

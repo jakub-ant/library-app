@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../shared/models/user.model';
 import { LogInService } from '../shared/services/log-in.service';
 
@@ -12,10 +13,15 @@ export class NavbarComponent implements OnInit {
      return this.logIn.getUserByID
    }
 
-  constructor(private logIn: LogInService) { }
+  constructor(private logIn: LogInService, private router: Router) { }
 
   ngOnInit(): void {    
-    console.log(this.currentUser)
+
+  }
+
+  logOut(){
+    this.logIn.logOut();
+this.router.navigate(['/'])
 
   }
 

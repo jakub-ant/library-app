@@ -10,6 +10,7 @@ import { BookItemComponent } from './book-list/book-item/book-item.component';
 import { BookEditComponent } from './book-list/book-edit/book-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LogInComponent } from './log-in/log-in.component';
+import { BookReservationsComponent } from './book-list/book-item/book-reservations/book-reservations.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LogInComponent } from './log-in/log-in.component';
     NewBookComponent,
     BookItemComponent,
     BookEditComponent,
-    LogInComponent
+    LogInComponent,
+    BookReservationsComponent
   ],
   imports: [
     BrowserModule,

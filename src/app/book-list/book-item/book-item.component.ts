@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LogInComponent } from 'src/app/log-in/log-in.component';
 import { Book } from 'src/app/shared/models/book.model';
 import { BooksService } from 'src/app/shared/services/books.service';
@@ -14,8 +14,11 @@ export class BookItemComponent implements OnInit {
   @Input()
   book!: Book;
   @Input() index!:number;
+  get isLogged(){
+    return this.userService.loggedIn
+  }
 
-  constructor(private router: Router, private booksService: BooksService, private userService: LogInService) { }
+  constructor(private route:ActivatedRoute,private router: Router, private booksService: BooksService, private userService: LogInService) { }
 
   ngOnInit(): void {
   }
@@ -32,6 +35,9 @@ export class BookItemComponent implements OnInit {
      err => console.log(err)
    )
 
+  }
+  onReservation(){
+    this.router.navigate(['reservations', this.book.id])
   }
 
 }
