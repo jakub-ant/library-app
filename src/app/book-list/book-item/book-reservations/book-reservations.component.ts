@@ -7,14 +7,9 @@ import {
   ActivatedRoute
 } from '@angular/router';
 import {
-  Observable,
-  Subscription,
-  throwError
-} from 'rxjs';
+  Subscription} from 'rxjs';
 import {
-  map,
-  flatMap
-} from 'rxjs/operators'
+  map} from 'rxjs/operators'
 import {
   Book
 } from 'src/app/shared/models/book.model';
